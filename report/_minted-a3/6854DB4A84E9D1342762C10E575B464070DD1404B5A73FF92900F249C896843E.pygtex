@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{pandas} \PYG{k+kn}{as} \PYG{n+nn}{pd}
+
+\PYG{k+kn}{from} \PYG{n+nn}{sklearn.metrics} \PYG{k+kn}{import} \PYG{n}{accuracy\PYGZus{}score}
+\PYG{k+kn}{from} \PYG{n+nn}{sklearn.ensemble} \PYG{k+kn}{import} \PYG{n}{RandomForestClassifier}
+
+\PYG{n}{data} \PYG{o}{=} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{read\PYGZus{}csv}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}corpus/train.csv\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{testdata} \PYG{o}{=} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{read\PYGZus{}csv}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}corpus/test.csv\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

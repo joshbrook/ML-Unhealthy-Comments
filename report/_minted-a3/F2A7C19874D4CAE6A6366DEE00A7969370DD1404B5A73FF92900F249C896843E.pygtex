@@ -1,0 +1,23 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{all\PYGZus{}attributes} \PYG{o}{=} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}antagonize\PYGZdq{}} \PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}condescending\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}dismissive\PYGZdq{}}\PYG{p}{,}
+	      \PYG{l+s+s2}{\PYGZdq{}generalisation\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}generalisation\PYGZus{}unfair\PYGZdq{}}\PYG{p}{,}
+	      \PYG{l+s+s2}{\PYGZdq{}hostile\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}sarcastic\PYGZdq{}}\PYG{p}{]}
+
+\PYG{n}{best\PYGZus{}attributes} \PYG{o}{=} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}antagonize\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}hostile\PYGZdq{}}\PYG{p}{]}
+
+\PYG{n}{X} \PYG{o}{=} \PYG{n}{data}\PYG{p}{[}\PYG{n}{best\PYGZus{}attributes}\PYG{p}{]}
+\PYG{n}{y} \PYG{o}{=} \PYG{n}{data}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}healthy\PYGZdq{}}\PYG{p}{]}
+
+\PYG{n}{Xtest} \PYG{o}{=} \PYG{n}{testdata}\PYG{p}{[}\PYG{n}{best\PYGZus{}attributes}\PYG{p}{]}
+\PYG{n}{ytest} \PYG{o}{=} \PYG{n}{testdata}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}healthy\PYGZdq{}}\PYG{p}{]}
+
+\PYG{n}{knn} \PYG{o}{=} \PYG{n}{KNeighborsClassifier}\PYG{p}{(}\PYG{n}{n\PYGZus{}neighbors}\PYG{o}{=}\PYG{l+m+mi}{10}\PYG{p}{)}
+\PYG{n}{rfc} \PYG{o}{=} \PYG{n}{RandomForestClassifier}\PYG{p}{(}\PYG{n}{n\PYGZus{}estimators}\PYG{o}{=}\PYG{l+m+mi}{200}\PYG{p}{,} \PYG{n}{random\PYGZus{}state}\PYG{o}{=}\PYG{l+m+mi}{42}\PYG{p}{)}
+\PYG{n}{gbc} \PYG{o}{=} \PYG{n}{GradientBoostingClassifier}\PYG{p}{(}\PYG{n}{n\PYGZus{}estimators}\PYG{o}{=}\PYG{l+m+mi}{100}\PYG{p}{,}
+		\PYG{n}{learning\PYGZus{}rate}\PYG{o}{=}\PYG{l+m+mf}{1.0}\PYG{p}{,} \PYG{n}{max\PYGZus{}depth}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{random\PYGZus{}state}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{)}
+
+\PYG{n}{vote} \PYG{o}{=} \PYG{n}{VotingClassifier}\PYG{p}{(}\PYG{n}{estimators}\PYG{o}{=}\PYG{p}{[(}\PYG{l+s+s2}{\PYGZdq{}gbc\PYGZdq{}}\PYG{p}{,} \PYG{n}{gbc}\PYG{p}{),}
+				    \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}rfc\PYGZdq{}}\PYG{p}{,} \PYG{n}{rfc}\PYG{p}{),}
+				    \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}knn\PYGZdq{}}\PYG{p}{,} \PYG{n}{knn}\PYG{p}{)} \PYG{p}{],}
+			\PYG{n}{voting}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}hard\PYGZsq{}}\PYG{p}{)}
+\end{Verbatim}

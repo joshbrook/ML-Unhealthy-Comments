@@ -1,0 +1,31 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{attributes} \PYG{o}{=} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}antagonize\PYGZdq{}} \PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}condescending\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}dismissive\PYGZdq{}}\PYG{p}{,}
+	      \PYG{l+s+s2}{\PYGZdq{}generalisation\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}generalisation\PYGZus{}unfair\PYGZdq{}}\PYG{p}{,}
+	      \PYG{l+s+s2}{\PYGZdq{}hostile\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}sarcastic\PYGZdq{}}\PYG{p}{]}
+
+\PYG{n}{X} \PYG{o}{=} \PYG{n}{data}\PYG{p}{[}\PYG{n}{attributes}\PYG{p}{]}
+\PYG{n}{y} \PYG{o}{=} \PYG{n}{data}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}healthy\PYGZdq{}}\PYG{p}{]}
+
+\PYG{n}{Xtest} \PYG{o}{=} \PYG{n}{testdata}\PYG{p}{[}\PYG{n}{attributes}\PYG{p}{]}
+\PYG{n}{ytest} \PYG{o}{=} \PYG{n}{testdata}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}healthy\PYGZdq{}}\PYG{p}{]}
+
+\PYG{n}{rfc} \PYG{o}{=} \PYG{n}{RandomForestClassifier}\PYG{p}{(}\PYG{n}{n\PYGZus{}estimators}\PYG{o}{=}\PYG{l+m+mi}{200}\PYG{p}{,} \PYG{n}{random\PYGZus{}state}\PYG{o}{=}\PYG{l+m+mi}{42}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}+end\PYGZus{}src \PYGZbs{}\PYGZbs{}}
+
+\PYGZbs{}\PYGZbs{}
+\PYG{n}{With} \PYG{n}{the} \PYG{n}{classifiers} \PYG{n+nb}{set} \PYG{n}{up}\PYG{p}{,} \PYG{n}{we} \PYG{n}{can} \PYG{n}{fit} \PYG{n}{both} \PYG{n}{to} \PYG{n}{the} \PYG{n}{training} \PYG{n}{data} \PYG{o+ow}{and} \PYG{k}{finally} \PYG{n}{predict} \PYG{n}{the} \PYG{n}{healthy} \PYG{n}{values} \PYG{o+ow}{in} \PYG{n}{the} \PYG{n}{test} \PYG{n+nb}{set}\PYG{o}{.}
+\PYG{n}{I}\PYG{l+s+s1}{\PYGZsq{}ll also add some code to print the results as well as an accuracy score based on the real values for /healthy/ vs the predictions.}
+
+\PYG{c+c1}{\PYGZsh{}+begin\PYGZus{}src python}
+
+
+\PYG{n}{clf} \PYG{o}{=} \PYG{n}{rfc}
+\PYG{n}{clf}\PYG{o}{.}\PYG{n}{fit}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,} \PYG{n}{y}\PYG{p}{)}
+\PYG{n}{ypred} \PYG{o}{=} \PYG{n}{clf}\PYG{o}{.}\PYG{n}{predict}\PYG{p}{(}\PYG{n}{Xtest}\PYG{p}{)}
+\PYG{n}{acc} \PYG{o}{=} \PYG{n}{accuracy\PYGZus{}score}\PYG{p}{(}\PYG{n}{ytest}\PYG{p}{,} \PYG{n}{ypred}\PYG{p}{)}
+
+\PYG{n}{p} \PYG{o}{=} \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Accuracy Score:\PYGZdq{}}\PYG{p}{,} \PYG{n}{acc}\PYG{p}{,}
+	  \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s2}{True Healthy Values:}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{ytest}\PYG{o}{.}\PYG{n}{value\PYGZus{}counts}\PYG{p}{(),}
+	  \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n\PYGZbs{}n}\PYG{l+s+s2}{Healthy Predictions:}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{Series}\PYG{p}{(}\PYG{n}{ypred}\PYG{p}{)}\PYG{o}{.}\PYG{n}{value\PYGZus{}counts}\PYG{p}{())}
+\end{Verbatim}
